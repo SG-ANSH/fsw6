@@ -1,0 +1,18 @@
+import java.util.regex.*;
+
+class PatternClass{
+    public static void main(String[] args){
+        String regex = "ab+c";
+        String input = "abbc";
+
+        Pattern pattern= Pattern.compile(regex);
+        Matcher matcher= pattern.matcher(input);
+
+        if(matcher.matches()){
+            System.out.println("Pattern Matched!");
+        }
+        else {
+            System.out.println("Pattern Does not Matched.");
+        }
+    }
+}
