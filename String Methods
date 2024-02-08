@@ -1,0 +1,12 @@
+class StringMethod {
+    public static void main(String []args){
+        String str = "Hello World!";
+
+        System.out.println("Length : " +str.length());
+        System.out.println("Upper Case : " +str.toUpperCase());
+        System.out.println("Lower Case : " +str.toLowerCase());
+        System.out.println("SubString : " +str.substring(7));
+        System.out.println("Concatenation : " +str.concat("How are you?"));
+        System.out.println("Replace : " +str.replace('H', 'Q'));
+    }
+}
