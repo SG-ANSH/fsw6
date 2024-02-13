@@ -1,0 +1,14 @@
+//Write a Program to implement various String Methods in Java.
+
+class StringMethods{
+    public static void main(String [] args){
+        String sentence = "Hello Guys! Myself Arth Vala from PARUL UNIVERSITY.";
+
+        System.out.println("Length : " +sentence.length());
+        System.out.println("Lowercase : " +sentence.toLowerCase());
+        System.out.println("Uppercase : " +sentence.toUpperCase());
+        System.out.println("Concat : " +sentence.concat(" Pursued IMCA Course."));
+        System.out.println("Replace : " +sentence.replace("Myself", "Im'ma"));
+        System.out.println("SubString : " + sentence.substring(4,10));
+    }
+}
