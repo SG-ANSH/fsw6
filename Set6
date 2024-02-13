@@ -1,0 +1,26 @@
+//Write a Program to Implement Regex Finder in Java.
+
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+class RegexFinder{
+    public static void main(String [] args){
+        Scanner sc=new Scanner(System.in);
+
+        String text = "Enter your whole Text : ";
+        String data = sc.nextLine();
+
+        String find_text = "Enter the Pattern : ";
+        String ptrn = sc.nextLine();
+
+        Pattern pattern = Pattern.compile(ptrn);
+        Matcher matcher = pattern.matcher(data);
+
+        while (matcher.find()){
+            System.out.println("Found Match at " +matcher.start()+ " and End at " +matcher.end()+ " with the Word " +matcher.group());
+        }
+
+        sc.close();
+    }
+}
