@@ -1,0 +1,20 @@
+//Write a Program on Byte Array Output Stream.
+import java.io.*;
+
+
+class ByteArrayOS{
+    public static void main(String [] args){
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            baos.write("Hello World from Byte Array Output Stream." .getBytes());
+
+            byte [] bytes = baos.toByteArray();
+
+
+            System.out.println(new String(bytes));
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
