@@ -1,0 +1,367 @@
+11. Write a program to implement FilterOutputStream & FilterInputStream in JAVA
+
+import java.io.*;  
+public class FilterExample {  
+    public static void main(String[] args) throws IOException {  
+        System.out.println("FilterOutputStream"); 
+		File data = new File("ABC.txt");  
+        FileOutputStream file = new FileOutputStream(data);  
+        FilterOutputStream filter = new FilterOutputStream(file);  
+        String s="Welcome to java";      
+        byte b[]=s.getBytes();      
+        filter.write(b);     
+        filter.flush();  
+        filter.close();  
+        file.close();  
+        System.out.println("Success");  
+		
+		System.out.println("FilterInputputStream"); 
+		try{    
+            FileInputStream fin=new FileInputStream("ABC.txt");    
+            int i=0;    
+            while((i=fin.read())!=-1){    
+             System.out.print((char)i);    
+            }    
+            fin.close();    
+          }catch(Exception e){System.out.println(e);}      
+    }  
+} 
+
+12. Write a program to implement Reader &Writer in JAVA
+
+import java.io.*;  
+public class WriterOrReaderExample {  
+    public static void main(String[] args) {  
+        try {  
+			System.out.println("Writer"); 
+            Writer w = new FileWriter("output.txt");  
+            String content = "I love my country";  
+            w.write(content);  
+            w.close();  
+            System.out.println("Done");  
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        } 
+
+		System.out.println("Reader"); 
+		 try {  
+            Reader reader = new FileReader("output.txt");  
+            int data = reader.read();  
+            while (data != -1) {  
+                System.out.print((char) data);  
+                data = reader.read();  
+            }  
+            reader.close();  
+        } catch (Exception ex) {  
+            System.out.println(ex.getMessage());  
+        }  	
+    }  
+} 
+
+13 Write a program to implement FileReader & FileWriter in JAVA
+
+import java.io.*; 
+public class FileWriterOrReaderExample {  
+    public static void main(String args[]){    
+         try{ 
+			//FileWriter
+           FileWriter fw=new FileWriter("testout.txt");    
+           fw.write("Welcome to javaTpoint.");    
+           fw.close();    
+          }catch(Exception e){System.out.println(e);}    
+          System.out.println("Success...");  
+
+			//FileReader 
+	try{ 			
+          FileReader fr=new FileReader("testout.txt");    
+          int i;    
+          while((i=fr.read())!=-1)    
+          System.out.print((char)i);    
+          fr.close();
+	}catch(Exception e){System.out.println(e);} 		  
+	}
+}	
+
+14. Write a program to implement CharArrayReader & CharArrayWriter in JAVA
+
+import java.io.*;
+public class CharArrayReaderWriterExample {
+ public static void main(String[] args) {
+ char[] data = "This is some data to be written to a CharArrayWriter.".toCharArray();
+ // Create a CharArrayReader
+ CharArrayReader reader = new CharArrayReader(data);
+ // Create a CharArrayWriter
+ CharArrayWriter writer = new CharArrayWriter();
+ // Read from CharArrayReader and write to CharArrayWriter
+ int ch;
+ try {
+ while ((ch = reader.read()) != -1) {
+ writer.write(ch);
+ }
+ } catch (IOException e) {e.printStackTrace();
+ }
+ // Get the written data as a String
+  try {
+ String writtenContent = writer.toString();
+ System.out.println("Original data: " + new String(data));
+ System.out.println("Written data: " + writtenContent);
+ reader.close();
+
+ writer.close();
+ }catch(Exception e){System.out.println(e);}
+ }
+}
+
+15. Write a program to implement PrintStream & PrintWriter in JAVA
+
+import java.io.*;
+public class PrintStreamPrintWriterExample {
+ public static void main(String[] args) throws FileNotFoundException {
+ // PrintStream example (standard output)
+ System.out.println("Hello from PrintStream (standard output)");
+ PrintStream fileOut = new PrintStream(new FileOutputStream("output.txt"));
+ System.setOut(fileOut); // Redirect standard output to file (optional)
+ // PrintWriter example (file output)
+ PrintWriter writer = new PrintWriter("data.txt");
+ writer.println("Hello from PrintWriter (file output)");
+ writer.println("This is some additional data.");
+ writer.close();
+ System.out.println("Data written to files. Standard output restored."); // If redirected
+ }
+}
+
+16. Create a class named Address and define name, city and state as the data members of this class.
+ Create anothernamed Maillist and add the elements 
+to the linked list and display the contents using Iterator interface.
+
+import java.util.Iterator;
+import java.util.LinkedList;
+
+class Address {
+    String name;
+    String city;
+    String state;
+
+    public Address(String name, String city, String state) {
+        this.name = name;
+        this.city = city;
+        this.state = state;
+    }
+}
+
+class Maillist implements Iterable<Address> {
+    private LinkedList<Address> addresses = new LinkedList<>();
+
+    public void add(Address address) {
+        addresses.add(address);
+    }
+
+    @Override
+    public Iterator<Address> iterator() {
+        return addresses.iterator();
+    }
+}
+
+public class Mainh {
+    public static void main(String[] args) {
+        Maillist mailList = new Maillist();
+        mailList.add(new Address("John Doe", "New York", "NY"));
+        mailList.add(new Address("Jane Smith", "Los Angeles", "CA"));
+        mailList.add(new Address("Bob Johnson", "Chicago", "IL"));
+
+        System.out.println("Contents of the Maillist:");
+        for (Address address : mailList) {
+            System.out.println("Name: " + address.name + ", City: " + address.city + ", State: " + address.state);
+        }
+    }
+}
+
+17. Write a program to implement various jQuery Effects.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery Effects</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    margin: 20px;
+    float: left;
+  }
+</style>
+</head>
+<body>
+
+<h2>jQuery Effects Examples</h2>
+
+<button id="btnFadeIn">Fade In</button>
+<button id="btnFadeOut">Fade Out</button>
+<button id="btnSlideDown">Slide Down</button>
+<button id="btnSlideUp">Slide Up</button>
+<button id="btnToggle">Toggle</button>
+
+<div class="box"></div>
+
+<script>
+$(document).ready(function(){
+  $("#btnFadeIn").click(function(){
+    $(".box").fadeIn();
+  });
+  $("#btnFadeOut").click(function(){
+    $(".box").fadeOut();
+  });
+  $("#btnSlideDown").click(function(){
+    $(".box").slideDown();
+  });
+  $("#btnSlideUp").click(function(){
+    $(".box").slideUp();
+  });
+  $("#btnToggle").click(function(){
+    $(".box").toggle();
+  });
+});
+</script>
+
+</body>
+</html>
+
+
+
+18. Write a program to implement various jQuery events.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery Events</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    margin: 20px;
+    float: left;
+  }
+</style>
+</head>
+<body>
+
+<h2>jQuery Events Examples</h2>
+
+<div class="box" id="box1">Click Me</div>
+<div class="box" id="box2">Hover Me</div>
+<div class="box" id="box3">Double Click Me</div>
+
+<script>
+$(document).ready(function(){
+  $("#box1").click(function(){
+    alert("Box 1 clicked!");
+  });
+  $("#box2").hover(function(){
+    $(this).css("background-color", "red");
+  }, function(){
+    $(this).css("background-color", "blue");
+  });
+  $("#box3").dblclick(function(){
+    $(this).css("background-color", "green");
+  });
+});
+</script>
+
+</body>
+</html>
+
+
+
+19. Write a program to implement OOPs concept using JS.
+function Car(make, model, year) {
+ this.make = make;
+ this.model = model;
+ this.year = year;
+ // Method to get car details
+ this.getDetails = function() {
+ return `Make: ${this.make}, Model: ${this.model}, Year: ${this.year}`;
+ }
+}
+// Create an ElectricCar subclass that inherits from Car
+function ElectricCar(make, model, year, batteryCapacity) {
+ Car.call(this, make, model, year); // Call the parent constructor
+ this.batteryCapacity = batteryCapacity;
+ // Method specific to ElectricCar
+ this.getRange = function() {
+ // Simulate range based on battery capacity (replace with actual calculation if needed)
+ return `${this.batteryCapacity} kWh battery. Estimated range: ${this.batteryCapacity * 5} km`;
+ }
+}
+// Set ElectricCar to inherit from Car prototype
+ElectricCar.prototype = Object.create(Car.prototype);
+ElectricCar.prototype.constructor = ElectricCar; // Reset constructor pointer
+// Create instances of Car and ElectricCar
+const car1 = new Car("Toyota", "Camry", 2023);
+const electricCar1 = new ElectricCar("Tesla", "Model S", 2024, 100);
+console.log(car1.getDetails()); // Output: Make: Toyota, Model: Camry, Year: 2023
+console.log(electricCar1.getDetails()); // Output: Make: Tesla, Model: Model S, Year: 2024 (inherited from Car)
+console.log(electricCar1.getRange()); // Output: 100 kWh battery. Estimated range: 500 km (specific to ElectricCar)
+// Note that electricCar1 can also access the getDetails() method inherited from Car
+
+
+20. Write a JS to implement form validation
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Validation</title>
+</head>
+<body>
+
+<h2>Form Validation Example</h2>
+
+<form id="myForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name"><br><br>
+  
+  <label for="email">Email:</label>
+  <input type="text" id="email" name="email"><br><br>
+  
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+document.getElementById("myForm").addEventListener("submit", function(event) {
+  // Prevent form submission
+  event.preventDefault();
+  
+  // Get form values
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  
+  // Regular expression for email validation
+  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+  // Validation
+  if (name.trim() === "") {
+    alert("Please enter your name");
+    return;
+  }
+  
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email address");
+    return;
+  }
+  
+  // If validation passes, submit the form (here we're just logging a success message)
+  console.log("Form submitted successfully!");
+});
+</script>
+
+</body>
+</html>
+
+
