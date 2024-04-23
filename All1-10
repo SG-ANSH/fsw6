@@ -1,0 +1,158 @@
+1. String Methods in JAVA:
+public class StringMethodsExample {
+ public static void main(String[] args) {
+ String str = "Hello, World!";
+ // Various String methods
+ System.out.println("Length: " + str.length());
+ System.out.println("Uppercase: " + str.toUpperCase());
+ System.out.println("Lowercase: " + str.toLowerCase());
+ System.out.println("Substring: " + str.substring(7));
+ System.out.println("Concatenation: " + str.concat(" How are you?"));
+ System.out.println("Index of 'o': " + str.indexOf('o'));
+ System.out.println("Replace 'l' with 'X': " + str.replace('l', 'X'));
+ }
+}
+2. Matcher Class in JAVA:
+import java.util.regex.*;
+public class MatcherExample {
+ public static void main(String[] args) {
+ String text = "The cat in the hat";
+ Pattern pattern = Pattern.compile("cat");
+ Matcher matcher = pattern.matcher(text);
+ // Using Matcher methods
+ if (matcher.find()) {
+ System.out.println("Match found at index " + matcher.start());
+ } else {
+ System.out.println("Match not found");
+ }
+ }
+}
+3. Pattern Class in JAVA:
+import java.util.regex.*;
+public class PatternExample {
+ public static void main(String[] args) {
+ String regex = "ab+c";
+ String input = "abbc";
+ // Using Pattern methods
+ Pattern pattern = Pattern.compile(regex);
+ Matcher matcher = pattern.matcher(input);
+ if (matcher.matches()) {
+ System.out.println("Pattern matched!");
+ } else {
+ System.out.println("Pattern did not match");
+ }
+ }
+}
+4. Character Class in JAVA:
+public class CharacterExample {
+ public static void main(String[] args) {
+ char ch = 'A';
+ // Using Character class methods
+ System.out.println("Is digit: " + Character.isDigit(ch));
+ System.out.println("Is letter: " + Character.isLetter(ch));
+ System.out.println("Is uppercase: " + Character.isUpperCase(ch));
+ System.out.println("To lowercase: " + Character.toLowerCase(ch));
+ }
+}
+5. Regex Quantifiers in JAVA:
+import java.util.regex.*;
+public class RegexQuantifiersExample {
+ public static void main(String[] args) {
+ String text = "aaaabbbbccccc";
+ // Using Regex Quantifiers
+ Pattern pattern = Pattern.compile("a{3,4}");
+ Matcher matcher = pattern.matcher(text);
+ if (matcher.find()) {
+ System.out.println("Match found: " + matcher.group());
+ } else {
+ System.out.println("Match not found");
+ }
+ }
+}
+6. Regex MetaCharacters in JAVA:
+import java.util.regex.*;
+public class RegexMetaCharactersExample {
+ public static void main(String[] args) {
+ String text = "a.b";
+ // Using Regex MetaCharacters
+ Pattern pattern = Pattern.compile("a\\.b");
+ Matcher matcher = pattern.matcher(text);
+ if (matcher.find()) {
+ System.out.println("Match found: " + matcher.group());
+ } else {
+ System.out.println("Match not found");
+ }
+ }
+}
+7. Regex Finder in JAVA:
+import java.util.regex.*;
+public class RegexFinderExample {
+ public static void main(String[] args) {
+ String text = "The pattern is in the text.";
+ // Using Regex Finder
+ Pattern pattern = Pattern.compile("\\b\\w+\\b");
+ Matcher matcher = pattern.matcher(text);
+ while (matcher.find()) {
+ System.out.println("Word found: " + matcher.group());
+ }
+ }
+}
+8. FileOutputStream & FileInputStream in JAVA:
+import java.io.*;
+public class FileIOExample {
+ public static void main(String[] args) {
+ try {
+ // Writing to a file using FileOutputStream
+ FileOutputStream fos = new FileOutputStream("output.txt");
+ fos.write("Hello, FileOutputStream!".getBytes());
+ fos.close();
+ // Reading from a file using FileInputStream
+ FileInputStream fis = new FileInputStream("output.txt");
+ int data;
+ while ((data = fis.read()) != -1) {
+ System.out.print((char) data);
+ }
+ fis.close();
+ } catch (IOException e) {
+ e.printStackTrace();
+ }
+ }
+}
+9. Buffered OutputStream & InputStream in JAVA:
+import java.io.*;
+public class BufferedIOExample {
+ public static void main(String[] args) {
+ try {
+ // Writing to a file using BufferedOutputStream
+ BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("buffered_output.txt"));
+ bos.write("Hello, BufferedOutputStream!".getBytes());
+ bos.close();
+ // Reading from a file using BufferedInputStream
+ BufferedInputStream bis = new BufferedInputStream(new FileInputStream("buffered_output.txt"));
+ int data;
+ while ((data = bis.read()) != -1) {
+ System.out.print((char) data);
+ }
+ bis.close();
+ } catch (IOException e) {
+ e.printStackTrace();
+ }
+ }
+}
+10. ByteArrayOutputStream in JAVA:
+import java.io.*;
+public class ByteArrayOutputStreamExample {
+ public static void main(String[] args) {
+ try {
+ // Writing to a ByteArrayOutputStream
+ ByteArrayOutputStream baos = new ByteArrayOutputStream();
+ baos.write("Hello, ByteArrayOutputStream!".getBytes());
+ // Converting to a byte array
+ byte[] byteArray = baos.toByteArray();
+ // Printing the content
+ System.out.println(new String(byteArray));
+ } catch (IOException e) {
+ e.printStackTrace();
+ }
+ }
+}
